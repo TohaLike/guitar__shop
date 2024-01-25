@@ -10,10 +10,14 @@ import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
+import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import TabBar from "./tabBar";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -57,9 +61,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const pages = ["HOME", "ABOUT US", "SHOP", "AMPLIFIERS"];
 
-  const isMenuOpen = Boolean(anchorEl);
+  const [value, setValue] = React.useState(0);
+
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
@@ -70,13 +78,20 @@ export default function Header() {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
 
   const menuId = "primary-search-account-menu";
@@ -152,6 +167,19 @@ export default function Header() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
@@ -163,7 +191,6 @@ export default function Header() {
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-
             <IconButton
               size="large"
               edge="end"
@@ -190,6 +217,7 @@ export default function Header() {
           </Box>
         </Toolbar>
       </AppBar>
+      <TabBar />
       {renderMobileMenu}
     </Box>
   );
