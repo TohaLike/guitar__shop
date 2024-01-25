@@ -15,8 +15,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import TabBar from "./tabBar";
 
 const Search = styled("div")(({ theme }) => ({
@@ -62,7 +60,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const pages = ["HOME", "ABOUT US", "SHOP"];
 
@@ -84,14 +81,6 @@ export default function Header() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   const menuId = "primary-search-account-menu";
@@ -168,7 +157,13 @@ export default function Header() {
             />
           </Search>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              width: "50%",
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
