@@ -12,8 +12,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
 const Search = styled("div")(({ theme }) => ({
@@ -81,26 +80,6 @@ export default function Header() {
   };
 
   const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
@@ -122,23 +101,12 @@ export default function Header() {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={0} color="error">
-            <MailIcon />
+            <ShoppingCartIcon />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Basket</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={0} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -149,7 +117,7 @@ export default function Header() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p>My account</p>
       </MenuItem>
     </Menu>
   );
@@ -173,7 +141,7 @@ export default function Header() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Vintage Guitar Club
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -192,18 +160,10 @@ export default function Header() {
               color="inherit"
             >
               <Badge badgeContent={0} color="error">
-                <MailIcon />
+                <ShoppingCartIcon />
               </Badge>
             </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={0} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+
             <IconButton
               size="large"
               edge="end"
@@ -231,7 +191,6 @@ export default function Header() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
     </Box>
   );
 }
