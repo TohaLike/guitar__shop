@@ -64,7 +64,7 @@ export default function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const pages = ["HOME", "ABOUT US", "SHOP", "AMPLIFIERS"];
+  const pages = ["HOME", "ABOUT US", "SHOP"];
 
   const [value, setValue] = React.useState(0);
 
