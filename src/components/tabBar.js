@@ -2,6 +2,7 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import { Link } from "react-router-dom";
 
 export default function TabBar() {
   const [value, setValue] = React.useState(0);
@@ -37,9 +38,9 @@ export default function TabBar() {
           allowScrollButtonsMobile
           aria-label="scrollable force tabs example"
         >
-          <Tab label="HOME" />
-          <Tab label="ABOUT US" />
-          <Tab label="SHOP" />
+          <Link to="/"><Tab label="HOME" LinkComponent=""/></Link>
+          <Link to="/aboutUs"><Tab label="ABOUT US" /></Link>
+          <Link to="/shop"><Tab label="SHOP" /></Link>
         </Tabs>
       </Box>
     </Box>
